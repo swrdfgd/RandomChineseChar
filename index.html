@@ -31,6 +31,17 @@
             font-size: 5em;
             margin-bottom: 1em;
             color: #333;
+            border: 2px solid #007bff;
+            padding: 1em;
+            border-radius: 5px;
+            display: inline-block;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        .character-display:hover {
+            background: #e0e0e0;
         }
 
         button {
@@ -63,18 +74,20 @@
 <body>
     <div class="container">
         <h1>Random Chinese Character Generator</h1>
-        <div id="character-display" class="character-display"></div>
+        <a id="character-display" class="character-display" target="_blank"></a><br>
         <button id="generate-button">Generate Character</button>
     </div>
     <script src="listchinese.js"></script>
     <script>
-		charMax = 1;
+	    charMax = 1;
         document.getElementById('generate-button').addEventListener('click', () => {
-			while (Math.random() < 1/2){charMax++}
+		    while (Math.random() < 1/2){charMax++}
 			if (charMax > characters.length){charMax = characters.length} 
             const randomIndex = Math.floor(Math.random() * charMax);
             const randomCharacter = characters[randomIndex];
-            document.getElementById('character-display').textContent = randomCharacter;
+            const characterDisplay = document.getElementById('character-display');
+            characterDisplay.textContent = randomCharacter;
+            characterDisplay.href = `https://hanzicraft.com/character/${randomCharacter}`;
         });
     </script>
 </body>
