@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Chinese Character Generator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: #f0f0f0;
+        }
+
+        .container {
+            text-align: center;
+            background: white;
+            padding: 2em;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+
+        h1 {
+            margin-bottom: 1em;
+        }
+
+        .character-display {
+            font-size: 5em;
+            margin-bottom: 1em;
+            color: #333;
+        }
+
+        button {
+            padding: 0.5em 2em;
+            font-size: 1em;
+            color: white;
+            background: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        @media (max-width: 600px) {
+            .character-display {
+                font-size: 3em;
+            }
+
+            button {
+                padding: 0.5em 1em;
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Random Chinese Character Generator</h1>
+        <div id="character-display" class="character-display"></div>
+        <button id="generate-button">Generate Character</button>
+    </div>
+    <script src="listchinese.js"></script>
+    <script>
+		charMax = 1;
+        document.getElementById('generate-button').addEventListener('click', () => {
+			while (Math.random() < 1/2){charMax++}
+			if (charMax > characters.length){charMax = characters.length} 
+            const randomIndex = Math.floor(Math.random() * charMax);
+            const randomCharacter = characters[randomIndex];
+            document.getElementById('character-display').textContent = randomCharacter;
+        });
+    </script>
+</body>
+</html>
